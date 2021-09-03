@@ -10,7 +10,6 @@ export default class Upload extends Component {
         }
     };
 
-
     render(){
         return(
             <Dropzone accept="image/*" onDropAccepted={() => {}}>
