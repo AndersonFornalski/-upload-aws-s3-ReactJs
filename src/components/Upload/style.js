@@ -20,6 +20,16 @@
     ${ props => props.isDragReject && dragReject} 
  `;
 
- export const UploadMessage = styled.div`
-    
- `
+ const messageColors = {
+    default:'#999',
+    error:'red',
+    success:'green'
+ } 
+
+ export const UploadMessage = styled.p`
+    display: flex;
+    color: ${ props => messageColors[props.type || 'default']};
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+ `;

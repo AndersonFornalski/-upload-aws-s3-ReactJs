@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import 'react-circular-progressbar/dist/styles.css';
+
 export default createGlobalStyle`
     * {
         margin: 0;
@@ -7,11 +9,10 @@ export default createGlobalStyle`
         outline: 0;
         box-sizing: border-box;
     }   
-
     body {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 14px;
-        background: #7159c1;
+        background: #2885e1;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
     }
@@ -21,5 +22,3 @@ export default createGlobalStyle`
         
     }
 `;
-
-//#2885e1 azul diferente

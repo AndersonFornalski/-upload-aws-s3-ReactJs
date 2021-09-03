@@ -9,10 +9,10 @@ import styled from 'styled-components';
 
  export const Content = styled.div `
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     margin: 30px;
     background: #FFF;
-    border-radius: 4px;
+    border-radius: 40px;
     padding: 20px;
  `;
 
