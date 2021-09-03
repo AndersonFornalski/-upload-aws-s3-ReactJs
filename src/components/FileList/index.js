@@ -2,36 +2,44 @@ import { Container, FileInfo, Preview } from "./styles";
 import {CircularProgressbar} from 'react-circular-progressbar'; 
 import { MdCheckCircle, MdError, MdLink } from 'react-icons/md';
 
-const FileList = () => (
+const FileList = ({files}) => (
     <Container> 
+       { files.map( uploadedFile => (
         <li>
             <FileInfo>
-                <Preview src="https://upload-cloud-2.s3.amazonaws.com/163c6314c8104308a08c8a7da1006b80-Lamborghini-Countach-LPI-800-4.jpg" />                
+                <Preview src={ uploadedFile.preview }/>                
                 <div>
-                    <strong>lamborghini-coutach.jpg</strong>
-                    <span>64kb <button onClick={() => {}}>Excluir</button></span>
+                    <strong> { uploadedFile.name} </strong>
+                    <span> { uploadedFile.readImageSize} <button onClick={() => {}}>Excluir</button></span>
                 </div>
             </FileInfo>
             <div>
-                <CircularProgressbar 
+                { !uploadedFile.uploaded && !uploadedFile.error && (
+                    <CircularProgressbar 
                     styles={{
                         root: { width: 24 },
                         path: { stroke: 'purple' }
                     }} 
                     strokeWidth={10}
-                    percentage={50}   
+                    percentage={ uploadedFile.progress}   
                  />   
-                 <a
-                    href="https://upload-cloud-2.s3.amazonaws.com/163c6314c8104308a08c8a7da1006b80-Lamborghini-Countach-LPI-800-4.jpg" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                 >
-                     <MdLink style={{ marginRight: 8}} size={24} color="blue" />
-                 </a>
-                 <MdCheckCircle size={24} color="green"/>
-                 <MdError size={24} color="red"/>
+                )}               
+                
+                 { uploadedFile.url && (
+                     <a
+                     href="https://s2.glbimg.com/iOJDmVIqL3xfdZsu7BV6RRCuyGs=/195x143:1722x1165/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2021/u/p/YP2XLtRSaQAUjomVLttA/nc-grigio-showroom.jpg" 
+                     target="_blank"
+                     rel="noopener noreferrer"
+                  >
+                  <MdLink style={{ marginRight: 8}} size={24} color="blue" />
+                  </a>
+                 )}
+
+                 { uploadedFile.success && <MdCheckCircle size={24} color="green"/> }
+                 { uploadedFile.error && <MdError size={24} color="red"/> } 
             </div>
         </li>
+       ))}
     </Container>
 )
 
