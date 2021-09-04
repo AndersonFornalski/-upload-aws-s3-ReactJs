@@ -1,11 +1,11 @@
 import { Container, FileInfo, Preview } from "./styles";
-import {CircularProgressbar} from 'react-circular-progressbar'; 
+import  CircularProgressbar  from 'react-circular-progressbar'; 
 import { MdCheckCircle, MdError, MdLink } from 'react-icons/md';
 
 const FileList = ({files}) => (
     <Container> 
        { files.map( uploadedFile => (
-        <li>
+        <li key={uploadedFile.id}>
             <FileInfo>
                 <Preview src={ uploadedFile.preview }/>                
                 <div>
@@ -15,13 +15,13 @@ const FileList = ({files}) => (
             </FileInfo>
             <div>
                 { !uploadedFile.uploaded && !uploadedFile.error && (
-                    <CircularProgressbar 
+                <CircularProgressbar 
                     styles={{
-                        root: { width: 24 },
-                        path: { stroke: 'purple' }
+                        root: { width: 40 },
+                        path: { stroke: 'orange' },
                     }} 
-                    strokeWidth={10}
-                    percentage={ uploadedFile.progress}   
+                    strokeWidth={20}
+                    percentage={uploadedFile.progress}   
                  />   
                 )}               
                 

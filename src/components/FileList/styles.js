@@ -40,7 +40,7 @@ export const FileInfo = styled.div`
 export const Preview = styled.div`
     width: 50px;
     height: 50px;
-    border-radius: 10px;
+    border-radius: 15px;
     background-image: url(${props => props.src} );
     background-repeat: no-repeat;
     background-size: cover;
