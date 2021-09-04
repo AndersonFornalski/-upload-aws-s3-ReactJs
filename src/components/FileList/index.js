@@ -2,7 +2,7 @@ import { Container, FileInfo, Preview } from "./styles";
 import  CircularProgressbar  from 'react-circular-progressbar'; 
 import { MdCheckCircle, MdError, MdLink } from 'react-icons/md';
 
-const FileList = ({files}) => (
+const FileList = ({files, onDelete }) => (
     <Container> 
        { files.map( uploadedFile => (
         <li key={uploadedFile.id}>
@@ -10,7 +10,8 @@ const FileList = ({files}) => (
                 <Preview src={ uploadedFile.preview }/>                
                 <div>
                     <strong> { uploadedFile.name} </strong>
-                    <span> { uploadedFile.readImageSize} <button onClick={() => {}}>Excluir</button></span>
+                    <span> { uploadedFile.readImageSize} 
+                    <button onClick={() => onDelete(uploadedFile.id)}>Excluir</button></span>
                 </div>
             </FileInfo>
             <div>
@@ -27,7 +28,7 @@ const FileList = ({files}) => (
                 
                  { uploadedFile.url && (
                      <a
-                     href="https://s2.glbimg.com/iOJDmVIqL3xfdZsu7BV6RRCuyGs=/195x143:1722x1165/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2021/u/p/YP2XLtRSaQAUjomVLttA/nc-grigio-showroom.jpg" 
+                     href={ uploadedFile.preview } 
                      target="_blank"
                      rel="noopener noreferrer"
                   >
@@ -35,7 +36,7 @@ const FileList = ({files}) => (
                   </a>
                  )}
 
-                 { uploadedFile.success && <MdCheckCircle size={24} color="green"/> }
+                 { uploadedFile.uploaded && <MdCheckCircle size={24} color="green"/> }
                  { uploadedFile.error && <MdError size={24} color="red"/> } 
             </div>
         </li>

@@ -6,12 +6,12 @@ export default class Upload extends Component {
 
     renderDragMessage = ( isDragActive, isDragReject ) => {
         if(!isDragActive){
-            return <UploadMessage> Arraste seus arquivos aqui...</UploadMessage>
+            return <UploadMessage> Arraste e solte suas imagens aqui...</UploadMessage>
         }
         if(isDragReject) {
-            return <UploadMessage type="error"> Arquivo nao suportado </UploadMessage>
+            return <UploadMessage type="error"> Somente imagens jpg e gif </UploadMessage>
         }
-        return <UploadMessage type="success"> Solte os arquivos aqui</UploadMessage>
+            return <UploadMessage type="success"> Solte suas imagens aqui</UploadMessage>
     };
     render(){
         const { onUpload } = this.props;
@@ -24,7 +24,7 @@ export default class Upload extends Component {
                         isDragReject={isDragReject}
                     >
                         <input { ...getInputProps()} />
-                        <h1>Click ou Arraste aqui suas imagem</h1>
+                        <h1>Clique ou Arraste aqui suas imagem</h1>
                         { this.renderDragMessage( isDragActive, isDragReject)}
                     </DropContainer>
                 )}
