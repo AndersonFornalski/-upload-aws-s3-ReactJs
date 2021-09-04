@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { parseInt, uniqueId } from 'lodash';
 import filesize from 'filesize';
 import api from "./services/api";
+import Swal from 'sweetalert2';
 
 import GlobalStyled from './styles/global';
 import { Container, Content } from './styles';
@@ -58,7 +59,8 @@ export default class App extends Component {
    this.setState({
      uploadedFile: this.state.uploadedFiles.filter(file => file.id !== id)
    });
-   this.updateList()
+   Swal.fire('Imagem Excluída!', '', 'success');
+   this.updateList();
   }
 
   updateFile = (id, data) => {

@@ -16,6 +16,12 @@
 
     transition: height 0.2s ease;
 
+    h1 {
+       color: orange;
+       padding: 10px;
+       text-align: center;
+    }
+
     ${ props => props.isDragActive && dragActive} 
     ${ props => props.isDragReject && dragReject} 
  `;

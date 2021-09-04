@@ -28,14 +28,13 @@ const FileList = ({files, onDelete }) => (
                 
                  { uploadedFile.url && (
                      <a
-                     href={ uploadedFile.preview } 
+                     href={ uploadedFile.url } 
                      target="_blank"
                      rel="noopener noreferrer"
                   >
                   <MdLink style={{ marginRight: 8}} size={24} color="blue" />
                   </a>
                  )}
-
                  { uploadedFile.uploaded && <MdCheckCircle size={24} color="green"/> }
                  { uploadedFile.error && <MdError size={24} color="red"/> } 
             </div>
